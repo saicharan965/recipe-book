@@ -1,13 +1,23 @@
-<nav class="navbar bg-primary">
-  <div class="container-fluid">
-    <span class="badge">Recipe-book</span>
+<ng-container *ngIf="!isLoggedIn;else spinner">
+  <nav class="navbar bg-primary">
+    <div class="container-fluid">
+      <span class="badge">Recipe-book</span>
 
-    <i class="bi bi-three-dots-vertical" data-bs-toggle="dropdown"></i>
-    <ul class="dropdown-menu dropdown-menu-end">
-      <li><button class="dropdown-item">Action</button></li>
-      <li><button class="dropdown-item">Another action</button></li>
-      <li><button class="dropdown-item">Something else here</button></li>
-    </ul>
+      <i class="bi bi-three-dots-vertical" data-bs-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><button class="dropdown-item">Action</button></li>
+        <li><button class="dropdown-item">Another action</button></li>
+        <li><button class="dropdown-item">Something else here</button></li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #spinner>
+  <div class="d-flex justify-content-center align-items-center" style="width: 100vw;height: 100vh;">
+    <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+      <span class="visually-hidden">Loading</span>
+    </div>
   </div>
-</nav>
-<router-outlet></router-outlet>
+</ng-template>
