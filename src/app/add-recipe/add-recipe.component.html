@@ -1,0 +1,123 @@
+<form [formGroup]="recipeForm" class="container py-2">
+    <!-- Id -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Id</span>
+        <input type="text" class="form-control" placeholder="Recipe Id" id="Id" formControlName="id">
+    </div>
+    <!-- Title -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Title</span>
+        <input type="text" class="form-control" placeholder="Recipe Title" id="title" formControlName="title">
+    </div>
+    <!-- Ingredients -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2">Ingredients</span>
+        <textarea class="form-control" placeholder="Enter ingredients, separated by commas"
+            formControlName="ingredients"></textarea>
+    </div>
+
+    <!-- Instructions -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3">Instructions</span>
+        <textarea class="form-control" placeholder="Enter cooking instructions"
+            formControlName="instructions"></textarea>
+    </div>
+
+    <!-- Preparation Time -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon4">Preparation Time</span>
+        <input type="text" class="form-control" placeholder="Enter preparation time"
+            formControlName="preparationTime" />
+    </div>
+
+    <!-- Cooking Time -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon5">Cooking Time</span>
+        <input type="text" class="form-control" placeholder="Enter cooking time" formControlName="cookingTime" />
+    </div>
+
+    <!-- Servings -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon6">Servings</span>
+        <input type="number" class="form-control" placeholder="Enter number of servings" formControlName="servings" />
+    </div>
+
+    <!-- Calories -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon7">Calories</span>
+        <input type="number" class="form-control" placeholder="Enter calorie count" formControlName="calories" />
+    </div>
+
+    <!-- Fat -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon8">Fat</span>
+        <input type="number" class="form-control" placeholder="Enter fat content" formControlName="fat" />
+    </div>
+
+    <!-- Protein -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon9">Protein</span>
+        <input type="number" class="form-control" placeholder="Enter protein content" formControlName="protein" />
+    </div>
+
+    <!-- Carbohydrates -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon10">Carbohydrates</span>
+        <input type="number" class="form-control" placeholder="Enter carbohydrate content"
+            formControlName="carbohydrates" />
+    </div>
+
+    <!-- Cuisine -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon11">Cuisine</span>
+        <input type="text" class="form-control" placeholder="Enter cuisine type" formControlName="cuisine" />
+    </div>
+
+    <!-- Category -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon12">Category</span>
+        <input type="text" class="form-control" placeholder="Enter recipe category" formControlName="category" />
+    </div>
+
+    <!-- Difficulty -->
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="difficulty">Difficulty</label>
+        <select class="form-select" id="difficulty" formControlName="difficulty">
+            <option value="Easy" selected>Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+    </div>
+
+    <!-- Thumbnail Image -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon14">Thumbnail Image</span>
+        <input type="text" class="form-control" placeholder="Enter URL for thumbnail image"
+            formControlName="thumbnailImage" />
+    </div>
+
+    <!-- Step Images (an array of strings) -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon15">Step Images</span>
+        <textarea class="form-control" placeholder="Enter step images URLs, separated by commas"
+            formControlName="stepImages"></textarea>
+    </div>
+
+    <!-- Tags (an array of strings) -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon16">Tags</span>
+        <textarea class="form-control" placeholder="Enter tags, separated by commas" formControlName="tags"></textarea>
+    </div>
+
+    <!-- Allergens (an array of strings) -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon17">Allergens</span>
+        <textarea class="form-control" placeholder="Enter allergens, separated by commas"
+            formControlName="allergens"></textarea>
+    </div>
+</form>
+<div class="d-flex justify-content-center my-2">
+    <button class="btn btn-outline-success" [disabled]="!recipeForm.valid" type="button" (click)="addRecipe()">
+        <i class="bi bi-plus-lg me-1"></i> Add Recipe
+    </button>
+</div>

@@ -12,7 +12,7 @@ export interface Recipe {
     carbohydrates: number;
     cuisine: string;
     category: string;
-    difficulty: string;
+    difficulty: "Easy" | "Medium" | "Hard";
     thumbnailImage: string;
     stepImages: string[];
     tags: string[];
