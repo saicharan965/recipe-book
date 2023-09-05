@@ -52,6 +52,18 @@ exports.getAllRecipes = (req, res) => {
   res.status(200).json(recipes);
 };
 
+exports.getRecipeById = (req, res) => {
+  const recipeId = parseInt(req.params.id);
+
+  const recipe = recipes.find((recipe) => recipe.id === recipeId);
+
+  if (recipe) {
+    res.status(200).json(recipe);
+  } else {
+    res.status(404).json({ message: "Recipe not found" });
+  }
+};
+
 exports.deleteRecipe = (req, res) => {
   const recipeId = parseInt(req.params.id);
   const index = recipes.findIndex((recipe) => recipe.id === recipeId);
@@ -74,6 +86,33 @@ exports.updateRecipe = (req, res) => {
       ...updatedRecipe,
     };
     res.status(200).json(recipes[recipeIndex]);
+  } else {
+    res.status(404).json({ message: "Recipe not found" });
+  }
+};
+
+exports.addRating = (req, res) => {
+  const recipeId = parseInt(req.params.id);
+  const { rating } = req.body;
+  const recipe = recipes.find((recipe) => recipe.id === recipeId);
+  if (recipe) {
+    recipe.ratings.push(rating);
+    const totalRatings = recipe.ratings.reduce((sum, r) => sum + r, 0);
+    const averageRating = totalRatings / recipe.ratings.length;
+    recipe.averageRating = averageRating;
+    res.status(200).json(recipe);
+  } else {
+    res.status(404).json({ message: "Recipe not found" });
+  }
+};
+
+exports.addReview = (req, res) => {
+  const recipeId = parseInt(req.params.id);
+  const { review } = req.body;
+  const recipe = recipes.find((recipe) => recipe.id === recipeId);
+  if (recipe) {
+    recipe.reviews.push(review);
+    res.status(200).json(recipe);
   } else {
     res.status(404).json({ message: "Recipe not found" });
   }
