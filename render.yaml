@@ -3,12 +3,12 @@ services:
     type: web
     buildCommand: npm install && npm run build
     startCommand: npm start
-    env: 
+    env:
       - key: NODE_ENV
         value: production
     envVars:
       - key: PORT
-        value: 3000 
+        value: 3000
     routes:
       - path: /*
         type: rewrite
@@ -19,7 +19,7 @@ services:
   - name: backend
     type: web
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: npm run server
     envVars:
       - key: NODE_ENV
         value: production
