@@ -5,12 +5,9 @@ services:
       npm install
       npm run build
     startCommand: npm start
-    env:
-      - key: NODE_ENV
-        value: production
     envVars:
       - key: PORT
-        value: 3000
+        value: 4200
     routes:
       - path: /*
         type: rewrite
@@ -22,9 +19,5 @@ services:
     type: web
     buildCommand: npm install
     startCommand: npm run server
-    envVars:
-      - key: NODE_ENV
-        value: production
-    healthCheckPath: /health
     github:
       branch: master
