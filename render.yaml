@@ -12,6 +12,6 @@ services:
 
   - name: backend
     type: web
-    runtime: static
+    runtime: node
     buildCommand: npm install
     startCommand: npm run server
