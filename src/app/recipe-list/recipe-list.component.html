@@ -1,10 +1,54 @@
-<ng-container *ngFor="let recipe of recipes">
-    <div class="card m-1">
-        <img [src]="recipe.thumbnailImage" class="card-img-top" alt="img" style="width: 10rem;height: 10rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{recipe.title}}</h5>
-            <p class="card-text">{{recipe.instructions}}</p>
-            <a class="btn btn-primary">Edit</a>
+<div class="container input-group my-3">
+    <input type="text" class="form-control form-control-lg" placeholder="Search Recipes" [(ngModel)]="searchTerm"
+        (ngModelChange)="searchRecipes()">
+    <span class="input-group-text bg-info" id="search-recipes">
+        <i class="bi bi-search"></i>
+    </span>
+    <button class="input-group-text bg-danger" id="clear-search" (click)="resetFilters()">
+        <i class="bi bi-x"></i>
+    </button>
+</div>
+
+<ng-container *ngFor="let recipe of filteredRecipes">
+    <div class="accordion accordion-flush mb-4" id="recipeAccordion">
+        <div class="card">
+            <div class="card-header bg-white border-0 p-0" id="recipeHeading{{ recipe.id }}">
+                <h2 class="mb-0">
+                    <button class="btn btn-light w-100 d-flex justify-content-between align-items-baseline" data-bs-toggle="collapse"
+                        attr.data-bs-target="#recipeCollapse{{ recipe.id }}" aria-expanded="true"
+                        attr.aria-controls="recipeCollapse{{ recipe.id }}">
+                        <div class="d-flex align-items-center">
+                            <div class="rounded overflow-hidden profile-picture">
+                                <img [src]="'assets/images/' + recipe.thumbnailImage" alt="{{ recipe.title }}"
+                                    class="img-fluid" style="width: 150px; height: 100px;" />
+                            </div>
+                            <h5 class="ms-3" [innerHtml]="recipe.title | highlight: searchTerm">{{ recipe.title }}</h5>
+                        </div>
+                        <button class="btn btn-primary">Edit</button>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="recipeCollapse{{ recipe.id }}" class="collapse" attr.aria-labelledby="recipeHeading{{ recipe.id }}"
+                data-bs-parent="#recipeAccordion">
+                <div class="card-body">
+                    <p class="card-text">{{ recipe.instructions }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Preparation Time:</strong> {{ recipe.preparationTime }}</li>
+                    <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
+                    <li class="list-group-item"><strong>Servings:</strong> {{ recipe.servings }}</li>
+                    <li class="list-group-item"><strong>Calories:</strong> {{ recipe.calories }}</li>
+                    <li class="list-group-item"><strong>Fat:</strong> {{ recipe.fat }}</li>
+                    <li class="list-group-item"><strong>Protein:</strong> {{ recipe.protein }}</li>
+                    <li class="list-group-item"><strong>Carbohydrates:</strong> {{ recipe.carbohydrates }}</li>
+                    <li class="list-group-item"><strong>Cuisine:</strong> {{ recipe.cuisine }}</li>
+                    <li class="list-group-item"><strong>Category:</strong> {{ recipe.category }}</li>
+                    <li class="list-group-item"><strong>Difficulty:</strong> {{ recipe.difficulty }}</li>
+                    <li class="list-group-item"><strong>Tags:</strong> {{ recipe.tags.join(', ') }}</li>
+                </ul>
+            </div>
         </div>
     </div>
+
 </ng-container>

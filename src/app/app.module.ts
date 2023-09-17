@@ -11,6 +11,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HighlightPipe } from './shared/highlight.pipe';
 
 const ROUTES: Routes = [
   {
@@ -31,7 +32,9 @@ const ROUTES: Routes = [
     AddRecipeComponent,
     EditRecipeComponent,
     DeleteRecipeComponent,
-    RecipeListComponent
+    RecipeListComponent,
+
+    HighlightPipe
   ],
   imports: [
     BrowserModule,

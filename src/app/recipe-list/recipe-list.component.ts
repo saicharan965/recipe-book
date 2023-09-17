@@ -8,19 +8,32 @@ import { RecipeApiService } from '../api/recipe-api.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.scss']
 })
-export class RecipeListComponent implements OnInit,OnDestroy{
+export class RecipeListComponent implements OnInit, OnDestroy {
   protected recipes!: Recipe[]
+  protected filteredRecipes!: Recipe[]
   private unsubscribe$: Subject<void> = new Subject()
+  protected searchTerm!: string
+
   constructor(private apiService: RecipeApiService) { }
   public ngOnInit(): void {
     this.apiService.getAllRecipes().pipe(takeUntil(this.unsubscribe$)).subscribe({
       next: (recipes: Recipe[]) => {
         this.recipes = recipes
+        this.filteredRecipes = recipes
       },
       error: (err) => {
         console.log(err)
       }
     })
+  }
+
+  protected searchRecipes() {
+    this.filteredRecipes = this.recipes.filter(x => x.title.includes(this.searchTerm))
+  }
+
+  protected resetFilters() {
+    this.searchTerm = ''
+    this.filteredRecipes = this.recipes
   }
 
   public ngOnDestroy(): void {

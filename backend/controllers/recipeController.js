@@ -1,119 +1,125 @@
-let recipes = [];
+const Recipe = require("../models/mongoose.models");
 
-exports.addRecipe = (req, res) => {
-  const {
-    title,
-    ingredients,
-    instructions,
-    preparationTime,
-    cookingTime,
-    servings,
-    calories,
-    fat,
-    protein,
-    carbohydrates,
-    cuisine,
-    category,
-    difficulty,
-    thumbnailImage,
-    stepImages,
-    tags,
-    allergens,
-  } = req.body;
+exports.addRecipe = async (req, res) => {
+  try {
+    const newRecipeData = req.body;
+    const newRecipe = new Recipe(newRecipeData);
+    await newRecipe.save();
 
-  const newRecipe = {
-    id: recipes.length + 1,
-    title,
-    ingredients,
-    instructions,
-    preparationTime,
-    cookingTime,
-    servings,
-    calories,
-    fat,
-    protein,
-    carbohydrates,
-    cuisine,
-    category,
-    difficulty,
-    thumbnailImage,
-    stepImages,
-    tags,
-    ratings: [],
-    reviews: [],
-    allergens,
-  };
-
-  recipes.push(newRecipe);
-  res.status(201).json(newRecipe);
-};
-
-exports.getAllRecipes = (req, res) => {
-  res.status(200).json(recipes);
-};
-
-exports.getRecipeById = (req, res) => {
-  const recipeId = parseInt(req.params.id);
-
-  const recipe = recipes.find((recipe) => recipe.id === recipeId);
-
-  if (recipe) {
-    res.status(200).json(recipe);
-  } else {
-    res.status(404).json({ message: "Recipe not found" });
+    res.status(201).json(newRecipe);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
-exports.deleteRecipe = (req, res) => {
-  const recipeId = parseInt(req.params.id);
-  const index = recipes.findIndex((recipe) => recipe.id === recipeId);
-
-  if (index !== -1) {
-    recipes.splice(index, 1);
-    res.status(204).send();
-  } else {
-    res.status(404).json({ message: "Recipe not found" });
+exports.getAllRecipes = async (req, res) => {
+  try {
+    const recipes = await Recipe.find();
+    res.status(200).json(recipes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
-exports.updateRecipe = (req, res) => {
+exports.getRecipeById = async (req, res) => {
+  const recipeId = parseInt(req.params.id);
+
+  try {
+    const recipe = await Recipe.findById(recipeId);
+
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.deleteRecipe = async (req, res) => {
+  const recipeId = parseInt(req.params.id);
+
+  try {
+    const deletedRecipe = await Recipe.findByIdAndRemove(recipeId);
+
+    if (deletedRecipe) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.updateRecipe = async (req, res) => {
   const recipeId = parseInt(req.params.id);
   const updatedRecipe = req.body;
-  const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
-  if (recipeIndex !== -1) {
-    recipes[recipeIndex] = {
-      id: recipeId,
-      ...updatedRecipe,
-    };
-    res.status(200).json(recipes[recipeIndex]);
-  } else {
-    res.status(404).json({ message: "Recipe not found" });
+
+  try {
+    const updatedRecipeDocument = await Recipe.findByIdAndUpdate(
+      recipeId,
+      updatedRecipe,
+      { new: true }
+    );
+
+    if (updatedRecipeDocument) {
+      res.status(200).json(updatedRecipeDocument);
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-exports.addRating = (req, res) => {
+exports.addRating = async (req, res) => {
   const recipeId = parseInt(req.params.id);
   const { rating } = req.body;
-  const recipe = recipes.find((recipe) => recipe.id === recipeId);
-  if (recipe) {
-    recipe.ratings.push(rating);
-    const totalRatings = recipe.ratings.reduce((sum, r) => sum + r, 0);
-    const averageRating = totalRatings / recipe.ratings.length;
-    recipe.averageRating = averageRating;
-    res.status(200).json(recipe);
-  } else {
-    res.status(404).json({ message: "Recipe not found" });
+
+  try {
+    const recipe = await Recipe.findById(recipeId);
+
+    if (recipe) {
+      recipe.ratings.push(rating);
+      const totalRatings = recipe.ratings.reduce((sum, r) => sum + r, 0);
+      const averageRating = totalRatings / recipe.ratings.length;
+      recipe.averageRating = averageRating;
+      await recipe.save();
+
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-exports.addReview = (req, res) => {
+exports.addReview = async (req, res) => {
   const recipeId = parseInt(req.params.id);
   const { review } = req.body;
-  const recipe = recipes.find((recipe) => recipe.id === recipeId);
-  if (recipe) {
-    recipe.reviews.push(review);
-    res.status(200).json(recipe);
-  } else {
-    res.status(404).json({ message: "Recipe not found" });
+
+  try {
+    const recipe = await Recipe.findById(recipeId);
+
+    if (recipe) {
+      recipe.reviews.push(review);
+      await recipe.save();
+
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
