@@ -1,6 +1,7 @@
 services:
   - name: frontend
     type: web
+    runtime: static
     buildCommand: |
       npm install
       npm run build
@@ -11,5 +12,6 @@ services:
 
   - name: backend
     type: web
+    runtime: static
     buildCommand: npm install
     startCommand: npm run server
