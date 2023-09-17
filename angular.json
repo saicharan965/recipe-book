@@ -42,8 +42,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/some-app/src/env.local.ts",
-                  "with": "apps/some-app/src/env.prod.ts"
+                  "replace": "apps/recipe-book/src/env.local.ts",
+                  "with": "apps/recipe-book/src/env.prod.ts"
                 }
               ],
               "budgets": [
