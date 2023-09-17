@@ -1,0 +1,28 @@
+services:
+  - name: frontend
+    type: web
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    env: 
+      - key: NODE_ENV
+        value: production
+    envVars:
+      - key: PORT
+        value: 3000 
+    routes:
+      - path: /*
+        type: rewrite
+    healthCheckPath: /
+    github:
+      branch: master
+
+  - name: backend
+    type: web
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health
+    github:
+      branch: master
