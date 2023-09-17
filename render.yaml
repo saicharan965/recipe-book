@@ -8,16 +8,8 @@ services:
     envVars:
       - key: PORT
         value: 4200
-    routes:
-      - path: /*
-        type: rewrite
-    healthCheckPath: /
-    github:
-      branch: master
 
   - name: backend
     type: web
     buildCommand: npm install
     startCommand: npm run server
-    github:
-      branch: master
