@@ -46,3 +46,15 @@ A web application for managing and sharing recipes.
 - `/`: Frontend Angular app.
 - `/backend/`: Backend Node.js app.
 - `API.md`: API documentation.
+
+
+# Recipe Book App
+
+![Under Construction](./wip.jpg)
+
+## Project Status
+
+This project is currently under active development and is continuously evolving to enhance your user experience. We are dedicated to delivering the best features and functionality to our users. Thank you for your patience and support as we work diligently on this project.
+
+For the latest updates and announcements, please visit our [website](https://example.com).
+
