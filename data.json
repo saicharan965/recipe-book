@@ -1,0 +1,497 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Pancetta",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Eggs",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Parmesan Cheese",
+        "quantity": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": "Cook spaghetti. Fry pancetta. Mix eggs, cheese, pepper. Combine all ingredients.",
+    "preparationTime": "10 minutes",
+    "cookingTime": "20 minutes",
+    "servings": 2,
+    "calories": 800,
+    "fat": 25,
+    "protein": 30,
+    "carbohydrates": 100,
+    "cuisine": "Italian",
+    "category": "Pasta",
+    "difficulty": "Medium",
+    "thumbnailImage": "spaghetti.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Italian", "Pasta", "Carbonara"],
+    "ratings": [4, 5, 4, 4, 5],
+    "reviews": ["Delicious!", "Easy to make.", "My family loved it."],
+    "allergens": ["None"]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Stir-Fry",
+    "ingredients": [
+      {
+        "name": "Chicken Breast",
+        "quantity": 300,
+        "unit": "g"
+      },
+      {
+        "name": "Broccoli",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Red Bell Pepper",
+        "quantity": 1,
+        "unit": ""
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "cloves"
+      },
+      {
+        "name": "Ginger",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": "Marinate chicken. Stir-fry with vegetables, garlic, and ginger. Add soy sauce.",
+    "preparationTime": "15 minutes",
+    "cookingTime": "15 minutes",
+    "servings": 4,
+    "calories": 350,
+    "fat": 8,
+    "protein": 30,
+    "carbohydrates": 20,
+    "cuisine": "Asian",
+    "category": "Stir-Fry",
+    "difficulty": "Easy",
+    "thumbnailImage": "stir-fry.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Asian", "Chicken", "Stir-Fry"],
+    "ratings": [4, 4, 5, 5],
+    "reviews": ["Quick and tasty!", "A family favorite."],
+    "allergens": ["Soy"]
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Lasagna",
+    "ingredients": [
+      {
+        "name": "Lasagna Noodles",
+        "quantity": 8,
+        "unit": ""
+      },
+      {
+        "name": "Zucchini",
+        "quantity": 2,
+        "unit": ""
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": 500,
+        "unit": "g"
+      },
+      {
+        "name": "Ricotta Cheese",
+        "quantity": 250,
+        "unit": "g"
+      },
+      {
+        "name": "Mozzarella Cheese",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Basil",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": "Boil noodles. Layer with zucchini, sauce, and cheese. Bake until bubbly.",
+    "preparationTime": "20 minutes",
+    "cookingTime": "40 minutes",
+    "servings": 6,
+    "calories": 450,
+    "fat": 15,
+    "protein": 20,
+    "carbohydrates": 60,
+    "cuisine": "Italian",
+    "category": "Pasta",
+    "difficulty": "Medium",
+    "thumbnailImage": "lasagna.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Italian", "Pasta", "Lasagna"],
+    "ratings": [5, 4, 5],
+    "reviews": ["A classic favorite!", "Great for family gatherings."],
+    "allergens": ["Dairy"]
+  },
+  {
+    "id": 4,
+    "title": "Homemade Pizza",
+    "ingredients": [
+      {
+        "name": "Pizza dough",
+        "quantity": 1,
+        "unit": "package"
+      },
+      {
+        "name": "Tomato sauce",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Mozzarella cheese",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Pepperoni slices",
+        "quantity": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Bell peppers",
+        "quantity": 1,
+        "unit": "medium"
+      }
+    ],
+    "instructions": "Roll out pizza dough. Spread tomato sauce, add cheese, pepperoni, and bell peppers. Bake until crust is golden.",
+    "preparationTime": "15 minutes",
+    "cookingTime": "20 minutes",
+    "servings": 4,
+    "calories": 350,
+    "fat": 12,
+    "protein": 14,
+    "carbohydrates": 45,
+    "cuisine": "Italian",
+    "category": "Pizza",
+    "difficulty": "Medium",
+    "thumbnailImage": "homemade-pizza.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Italian", "Pizza", "Homemade"],
+    "ratings": [4, 4, 5],
+    "reviews": ["Delicious homemade pizza!", "Perfect for family gatherings."],
+    "allergens": ["Dairy"]
+  },
+  {
+    "id": 5,
+    "title": "Chicken Stir-Fry",
+    "ingredients": [
+      {
+        "name": "Chicken breast",
+        "quantity": 2,
+        "unit": "pieces"
+      },
+      {
+        "name": "Bell peppers",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "name": "Broccoli florets",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Soy sauce",
+        "quantity": 2,
+        "unit": "tablespoons"
+      },
+      {
+        "name": "Ginger",
+        "quantity": 1,
+        "unit": "inch"
+      }
+    ],
+    "instructions": "Slice chicken and vegetables. Stir-fry in a wok with soy sauce and ginger until cooked. Serve hot.",
+    "preparationTime": "15 minutes",
+    "cookingTime": "15 minutes",
+    "servings": 4,
+    "calories": 280,
+    "fat": 8,
+    "protein": 26,
+    "carbohydrates": 15,
+    "cuisine": "Asian",
+    "category": "Stir-Fry",
+    "difficulty": "Easy",
+    "thumbnailImage": "chicken-stir-fry.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg"],
+    "tags": ["Asian", "Chicken", "Stir-Fry"],
+    "ratings": [4, 4, 5],
+    "reviews": ["Quick and tasty!", "Perfect weeknight dinner."],
+    "allergens": ["Soy"]
+  },
+  {
+    "id": 6,
+    "title": "Chocolate Cake",
+    "ingredients": [
+      {
+        "name": "All-purpose flour",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "name": "Cocoa powder",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Sugar",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "name": "Eggs",
+        "quantity": 3,
+        "unit": "large"
+      },
+      {
+        "name": "Milk",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ],
+    "instructions": "Mix dry ingredients. Add eggs and milk. Bake in a greased pan at 350°F for 30 minutes. Let it cool before serving.",
+    "preparationTime": "15 minutes",
+    "cookingTime": "30 minutes",
+    "servings": 8,
+    "calories": 350,
+    "fat": 12,
+    "protein": 6,
+    "carbohydrates": 55,
+    "cuisine": "Dessert",
+    "category": "Cake",
+    "difficulty": "Medium",
+    "thumbnailImage": "chocolate-cake.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Dessert", "Chocolate", "Cake"],
+    "ratings": [5, 5, 4],
+    "reviews": ["Decadent and delicious!", "Perfect for special occasions."],
+    "allergens": ["Dairy", "Eggs"]
+  },
+  {
+    "id": 7,
+    "title": "Mushroom Risotto",
+    "ingredients": [
+      {
+        "name": "Arborio rice",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Onion",
+        "quantity": 1,
+        "unit": "medium"
+      },
+      {
+        "name": "White wine",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Parmesan cheese",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ],
+    "instructions": "Sauté onions and mushrooms. Add rice and cook with white wine and broth. Stir in Parmesan cheese before serving.",
+    "preparationTime": "10 minutes",
+    "cookingTime": "25 minutes",
+    "servings": 4,
+    "calories": 320,
+    "fat": 10,
+    "protein": 8,
+    "carbohydrates": 45,
+    "cuisine": "Italian",
+    "category": "Risotto",
+    "difficulty": "Medium",
+    "thumbnailImage": "mushroom-risotto.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Italian", "Risotto", "Mushrooms"],
+    "ratings": [4, 4, 5],
+    "reviews": ["Creamy and flavorful!", "A classic Italian dish."],
+    "allergens": ["Dairy"]
+  },
+  {
+    "id": 8,
+    "title": "Greek Salad",
+    "ingredients": [
+      {
+        "name": "Cucumbers",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "name": "Tomatoes",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "name": "Red onion",
+        "quantity": 1,
+        "unit": "small"
+      },
+      {
+        "name": "Feta cheese",
+        "quantity": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Kalamata olives",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ],
+    "instructions": "Chop cucumbers, tomatoes, and red onion. Crumble feta cheese and add olives. Drizzle with olive oil and sprinkle with oregano.",
+    "preparationTime": "10 minutes",
+    "cookingTime": "0 minutes",
+    "servings": 4,
+    "calories": 180,
+    "fat": 14,
+    "protein": 6,
+    "carbohydrates": 8,
+    "cuisine": "Greek",
+    "category": "Salad",
+    "difficulty": "Easy",
+    "thumbnailImage": "greek-salad.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg"],
+    "tags": ["Greek", "Salad", "Healthy"],
+    "ratings": [5, 5],
+    "reviews": ["Authentic Greek flavors!", "A refreshing and light salad."],
+    "allergens": ["Dairy", "Olives"]
+  },
+  {
+    "id": 9,
+    "title": "Chicken Tacos",
+    "ingredients": [
+      {
+        "name": "Chicken breast",
+        "quantity": 2,
+        "unit": "pieces"
+      },
+      {
+        "name": "Taco shells",
+        "quantity": 8,
+        "unit": "pieces"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Tomatoes",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "name": "Cheddar cheese",
+        "quantity": 100,
+        "unit": "g"
+      }
+    ],
+    "instructions": "Grill chicken and slice. Fill taco shells with chicken, lettuce, tomatoes, and cheese. Serve with salsa.",
+    "preparationTime": "15 minutes",
+    "cookingTime": "15 minutes",
+    "servings": 4,
+    "calories": 350,
+    "fat": 16,
+    "protein": 26,
+    "carbohydrates": 30,
+    "cuisine": "Mexican",
+    "category": "Tacos",
+    "difficulty": "Easy",
+    "thumbnailImage": "chicken-tacos.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Mexican", "Tacos", "Chicken"],
+    "ratings": [4, 5, 4],
+    "reviews": ["Quick and flavorful!", "A family favorite."],
+    "allergens": ["Dairy"]
+  },
+  {
+    "id": 10,
+    "title": "Vegan Pad Thai",
+    "ingredients": [
+      {
+        "name": "Rice noodles",
+        "quantity": 8,
+        "unit": "ounces"
+      },
+      {
+        "name": "Firm tofu",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Bean sprouts",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "Carrots",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "name": "Peanuts",
+        "quantity": 1,
+        "unit": "cup"
+      }
+    ],
+    "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
+    "preparationTime": "20 minutes",
+    "cookingTime": "15 minutes",
+    "servings": 4,
+    "calories": 320,
+    "fat": 14,
+    "protein": 12,
+    "carbohydrates": 40,
+    "cuisine": "Thai",
+    "category": "Vegetarian",
+    "difficulty": "Medium",
+    "thumbnailImage": "vegan-pad-thai.jpg",
+    "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
+    "tags": ["Thai", "Vegetarian", "Noodles"],
+    "ratings": [5, 4],
+    "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
+    "allergens": ["Peanuts", "Soy"]
+  }
+]

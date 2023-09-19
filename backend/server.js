@@ -2,6 +2,7 @@ const express = require("express");
 const recipeRoutes = require("./routes/recipeRoutes");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const verifyToken = require("./middlewares/verify-token.auth");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Recipe Book App!");
 });
 
-app.use("/api", recipeRoutes);
+app.use("/api", verifyToken, recipeRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
