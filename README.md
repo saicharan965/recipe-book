@@ -45,4 +45,4 @@ A web application for managing and sharing recipes.
 
 - `/`: Frontend Angular app.
 - `/backend/`: Backend Node.js app.
-- `API.md`: Detailed API documentation.
+- `API.md`: API documentation.
