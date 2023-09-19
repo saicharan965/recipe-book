@@ -28,7 +28,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   protected searchRecipes() {
-    this.filteredRecipes = this.recipes.filter(x => x.title.includes(this.searchTerm))
+    this.filteredRecipes = this.recipes.filter(x => x.title.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase()))
   }
 
   protected resetFilters() {

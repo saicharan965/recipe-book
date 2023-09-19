@@ -1,11 +1,1 @@
-<ng-container *ngIf="!isLoggedIn;else spinner">
-  <router-outlet></router-outlet>
-</ng-container>
-
-<ng-template #spinner>
-  <div class="d-flex justify-content-center align-items-center" style="width: 100vw;height: 100vh;">
-    <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
-      <span class="visually-hidden">Loading</span>
-    </div>
-  </div>
-</ng-template>
+<router-outlet></router-outlet>

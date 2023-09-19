@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'recipe-book';
-  protected isLoggedIn = false
+export class AppComponent  {
+  constructor() { }
+  title = 'Recipe-book';
 }
