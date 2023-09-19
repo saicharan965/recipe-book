@@ -47,14 +47,14 @@ A web application for managing and sharing recipes.
 - `/backend/`: Backend Node.js app.
 - `API.md`: API documentation.
 
-
 # Recipe Book App
 
-![Under Construction](./wip.jpg)
+![Under Construction](./wip.png)
 
 ## Project Status
 
-This project is currently under active development and is continuously evolving to enhance your user experience. We are dedicated to delivering the best features and functionality to our users. Thank you for your patience and support as we work diligently on this project.
+This project is currently under active development and is continuously evolving to enhance your user experience. Iam dedicated to delivering the best features and functionality to my users. Thank you for your patience and support as I work diligently on this project.
 
-For the latest updates and announcements, please visit our [website](https://example.com).
+## Deployed-link
 
+You can always find the latest version [here](https://recipe-book-fe.onrender.com)
