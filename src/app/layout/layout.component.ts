@@ -9,7 +9,6 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  protected isLoading = false
   protected isLoggedIn = false
   private unsubscribe$: Subject<void> = new Subject()
   constructor(private authService: AuthService, @Inject(DOCUMENT) public document: Document,) { }

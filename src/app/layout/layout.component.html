@@ -1,4 +1,4 @@
-<ng-container *ngIf="isLoggedIn && !isLoading; else spinner">
+<ng-container *ngIf="isLoggedIn; else spinner">
     <nav class="navbar bg-primary">
         <div class="container-fluid">
             <span class="badge">Recipe-book</span>
@@ -23,11 +23,6 @@
     </div>
 </ng-container>
 
-
 <ng-template #spinner>
-    <div class="d-flex justify-content-center align-items-center" style="width: 100vw;height: 100vh;">
-        <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
-            <span class="visually-hidden">Loading</span>
-        </div>
-    </div>
+    <recipe-ui-spinner></recipe-ui-spinner>
 </ng-template>

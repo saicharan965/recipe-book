@@ -9,6 +9,7 @@ import { RecipeApiService } from '../api/recipe-api.service';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
+  protected isLoading: boolean = true
   protected recipes!: Recipe[]
   protected filteredRecipes!: Recipe[]
   protected stars: number[] = [1, 2, 3, 4, 5];
@@ -21,6 +22,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
       next: (recipes: Recipe[]) => {
         this.recipes = recipes
         this.filteredRecipes = recipes
+        this.isLoading = false
       },
       error: (err) => {
         console.log(err)

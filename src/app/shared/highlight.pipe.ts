@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'highlight',
+    name: 'highlight'
 })
 export class HighlightPipe implements PipeTransform {
-    transform(value: string, searchTerm: string): string {
-        if (!searchTerm || !value) {
-            return value;
+    transform(text: string, search: string): string {
+        if (!search || !text) {
+            return text;
         }
-        const regex = new RegExp(searchTerm, 'gi');
-        return value.replace(regex, (match) => `<mark class="bg-warning p-0">${match}</mark>`);
+        const pattern = new RegExp(search, 'gi');
+        return text.replace(pattern, match => `<span class="p-0 bg-warning">${match}</span>`);
     }
 }

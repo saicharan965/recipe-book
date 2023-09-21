@@ -15,6 +15,7 @@ import { HighlightPipe } from './shared/highlight.pipe';
 import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 import { TokenInterceptor } from '../auth/token.interceptor';
 import { environment } from '../env/env.local';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 const ROUTES: Routes = [
   {
@@ -39,7 +40,8 @@ const ROUTES: Routes = [
     DeleteRecipeComponent,
     RecipeListComponent,
 
-    HighlightPipe
+    HighlightPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
