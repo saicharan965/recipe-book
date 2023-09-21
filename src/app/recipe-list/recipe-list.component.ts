@@ -11,6 +11,7 @@ import { RecipeApiService } from '../api/recipe-api.service';
 export class RecipeListComponent implements OnInit, OnDestroy {
   protected recipes!: Recipe[]
   protected filteredRecipes!: Recipe[]
+  protected stars: number[] = [1, 2, 3, 4, 5];
   private unsubscribe$: Subject<void> = new Subject()
   protected searchTerm!: string
 
@@ -39,5 +40,14 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.unsubscribe$.next()
     this.unsubscribe$.complete()
+  }
+
+  protected calculateAverageRating(ratings: number[]): number {
+    if (!ratings || ratings.length === 0) {
+      return 0;
+    }
+    const totalRatings = ratings.reduce((sum, rating) => sum + rating, 0);
+    const averageRating = totalRatings / ratings.length;
+    return averageRating;
   }
 }
