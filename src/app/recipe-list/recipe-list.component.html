@@ -12,8 +12,8 @@
 
 
   <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let recipe of filteredRecipes">
-      <div class="card mb-4 shadow">
+    <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of filteredRecipes">
+      <div class="card mb-4 shadow hover d-flex flex-column">
         <div class="card-body">
           <div class="d-flex align-items-center">
             <div class="rounded overflow-hidden profile-picture">
@@ -22,19 +22,9 @@
             </div>
             <h5 class="ms-3" [innerHtml]="recipe.title | highlight: searchTerm">{{ recipe.title }}</h5>
           </div>
-          <p class="card-text">{{ recipe.instructions }}</p>
+          <p class="card-text text-truncate max-lines-3">{{ recipe.instructions }}</p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Preparation Time:</strong> {{ recipe.preparationTime }}</li>
             <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
-            <li class="list-group-item"><strong>Servings:</strong> {{ recipe.servings }}</li>
-            <li class="list-group-item"><strong>Calories:</strong> {{ recipe.calories }}</li>
-            <li class="list-group-item"><strong>Fat:</strong> {{ recipe.fat }}</li>
-            <li class="list-group-item"><strong>Protein:</strong> {{ recipe.protein }}</li>
-            <li class="list-group-item"><strong>Carbohydrates:</strong> {{ recipe.carbohydrates }}</li>
-            <li class="list-group-item"><strong>Cuisine:</strong> {{ recipe.cuisine }}</li>
-            <li class="list-group-item"><strong>Category:</strong> {{ recipe.category }}</li>
-            <li class="list-group-item"><strong>Difficulty:</strong> {{ recipe.difficulty }}</li>
-            <li class="list-group-item"><strong>Tags:</strong> {{ recipe.tags.join(', ') }}</li>
             <li class="list-group-item">
               <strong>Ratings:</strong>
               <span class="star-rating ms-2">
