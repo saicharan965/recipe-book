@@ -13,6 +13,7 @@ import { Ingredient, Recipe } from '../api/api.models';
 export class EditRecipeComponent implements OnInit, OnDestroy {
   protected editRecipeForm!: FormGroup;
   private recipe!: Recipe
+  protected isEditing: boolean = false
   protected isLoading: boolean = true
   private unsubscribe$: Subject<void> = new Subject()
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private apiService: RecipeApiService) { }
@@ -39,6 +40,7 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
         tags: [[]],
         allergens: [[]],
       });
+      this.editRecipeForm.disable();
       const recipeId = params['id']
       if (recipeId) {
         this.apiService.getRecipeById(recipeId).pipe(takeUntil(this.unsubscribe$), finalize(() => {
@@ -53,7 +55,7 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
     })
   }
 
-  populateForm(recipeData: Recipe) {
+  private populateForm(recipeData: Recipe) {
     this.editRecipeForm.patchValue({
       id: recipeData.id,
       title: recipeData.title,
@@ -77,16 +79,24 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
     recipeData.ingredients.forEach((ingredient: Ingredient) => {
       ingredientsControl.push(ingredient.name)
     })
-
   }
 
-  onSubmit(): void {
+  protected onSubmit(): void {
     if (this.editRecipeForm.valid) {
       this.editRecipeForm.controls['ingredients'].patchValue(this.recipe.ingredients)
       console.log(this.editRecipeForm.controls['ingredients'].value)
       this.apiService.updateRecipe(this.editRecipeForm.value).pipe(takeUntil(this.unsubscribe$)).subscribe((res) => this.populateForm(res))
     }
   }
+  protected toggleEdit() {
+    this.isEditing = !this.isEditing;
+    if (this.isEditing) {
+      this.editRecipeForm.enable();
+    } else {
+      this.editRecipeForm.disable();
+    }
+  }
+
   public ngOnDestroy(): void {
     this.unsubscribe$.next()
     this.unsubscribe$.complete()

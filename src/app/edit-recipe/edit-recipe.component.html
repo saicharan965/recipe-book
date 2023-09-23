@@ -1,9 +1,16 @@
-<ng-container *ngIf="!isLoading;else spinner">
+<ng-container *ngIf="!isLoading && editRecipeForm;else spinner">
     <marquee behavior="scroll" direction="left" class="text-danger">
         Please note: For now, you can only edit specific fields. We will introduce the ability to edit all fields in the
         near future. Thank you for your understanding.
     </marquee>
-
+    <nav class="navbar bg-success-subtle rounded">
+        <div class="container-fluid">
+            <span class="navbar-brand">{{editRecipeForm.controls['title'].value}}</span>
+            <button class="btn btn-primary" (click)="toggleEdit()">
+                <i class="bi bi-pencil"></i> Edit
+            </button>
+        </div>
+    </nav>
     <form [formGroup]="editRecipeForm" class="container py-2">
         <!-- Title -->
         <div class="input-group mb-3">
