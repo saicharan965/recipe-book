@@ -25,10 +25,8 @@ exports.getAllRecipes = async (req, res) => {
 
 exports.getRecipeById = async (req, res) => {
   const recipeId = parseInt(req.params.id);
-
   try {
-    const recipe = await Recipe.findById(recipeId);
-
+    const recipe = await Recipe.findOne({ id: recipeId });
     if (recipe) {
       res.status(200).json(recipe);
     } else {
@@ -62,8 +60,8 @@ exports.updateRecipe = async (req, res) => {
   const updatedRecipe = req.body;
 
   try {
-    const updatedRecipeDocument = await Recipe.findByIdAndUpdate(
-      recipeId,
+    const updatedRecipeDocument = await Recipe.findOneAndUpdate(
+      { id: recipeId },
       updatedRecipe,
       { new: true }
     );

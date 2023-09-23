@@ -9,7 +9,7 @@ import { RecipeApiService } from '../api/recipe-api.service';
 })
 export class AddRecipeComponent {
   protected recipeForm!: FormGroup
-  constructor(private fb: FormBuilder, private apiService:RecipeApiService) {
+  constructor(private fb: FormBuilder, private apiService: RecipeApiService) {
     this.recipeForm = this.fb.group({
       id: ['', Validators.required],
       title: ['', Validators.required],
@@ -33,10 +33,10 @@ export class AddRecipeComponent {
   }
 
   protected addRecipe() {
-      const formData = this.formatFormData(this.recipeForm.value);
-      this.apiService.addRecipe(formData).subscribe((res)=>{
-        console.log(res)
-      })
+    const formData = this.formatFormData(this.recipeForm.value);
+    this.apiService.addRecipe(formData).subscribe((res) => {
+      console.log(res)
+    })
   }
 
   private formatFormData(formData: any): any {
