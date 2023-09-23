@@ -9,13 +9,13 @@ const jwksClientInstance = jwksClient({
 });
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization.replace("Bearer ", "");
+  const token = req.headers.authorization;
   if (!token) {
     return res
       .status(401)
       .json({ message: "Authentication failed: Token not provided" });
   }
-  jwt.verify(token, getKey, (err, decoded) => {
+  jwt.verify(token.replace("Bearer ", ""), getKey, (err, decoded) => {
     if (err) {
       console.log(err);
       return res
