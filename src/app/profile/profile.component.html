@@ -1,0 +1,21 @@
+<div class="container mt-5" *ngIf="user; else spinner">
+    <div class="row justify-content-center">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <img [src]="user.picture" [alt]="user.name" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                        <h4>{{user.name}}</h4>
+                        <p class="text-secondary mb-1">{{user.email}}</p>
+                        <p class="text-muted font-size-sm">{{user.nickname}}</p>
+                        <p class="text-muted font-size-sm">{{user.phone_number}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #spinner>
+    <recipe-ui-spinner></recipe-ui-spinner>
+</ng-template>

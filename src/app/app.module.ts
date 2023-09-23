@@ -16,6 +16,7 @@ import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 import { TokenInterceptor } from '../auth/token.interceptor';
 import { environment } from '../env/env.local';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const ROUTES: Routes = [
   {
@@ -27,6 +28,7 @@ const ROUTES: Routes = [
       { path: 'add', component: AddRecipeComponent },
       { path: 'edit', component: EditRecipeComponent },
       { path: 'delete', component: DeleteRecipeComponent },
+      { path: 'profile', component: ProfileComponent },
     ]
   }
 ]
@@ -41,7 +43,8 @@ const ROUTES: Routes = [
     RecipeListComponent,
 
     HighlightPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
