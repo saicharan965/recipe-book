@@ -62,7 +62,7 @@ exports.deleteRecipe = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const recipeIndex = user.recipes.findIndex((r) => r.id === recipeId);
+    const recipeIndex = user.recipes.findIndex((r) => r.recipeId === recipeId);
     if (recipeIndex !== -1) {
       user.recipes.splice(recipeIndex, 1);
       await user.save();
@@ -85,7 +85,7 @@ exports.updateRecipe = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const recipeIndex = user.recipes.findIndex((r) => r.id === recipeId);
+    const recipeIndex = user.recipes.findIndex((r) => r.recipeId === recipeId);
     if (recipeIndex !== -1) {
       user.recipes[recipeIndex] = updatedRecipe;
       await user.save();
@@ -109,7 +109,7 @@ exports.addRating = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const recipeIndex = user.recipes.findIndex((r) => r.id === recipeId);
+    const recipeIndex = user.recipes.findIndex((r) => r.recipeId === recipeId);
     if (recipeIndex !== -1) {
       const recipe = user.recipes[recipeIndex];
       recipe.ratings.push(rating);
@@ -136,7 +136,7 @@ exports.addReview = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const recipeIndex = user.recipes.findIndex((r) => r.id === recipeId);
+    const recipeIndex = user.recipes.findIndex((r) => r.recipeId === recipeId);
     if (recipeIndex !== -1) {
       const recipe = user.recipes[recipeIndex];
       recipe.reviews.push(review);

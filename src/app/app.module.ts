@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightPipe } from './shared/highlight.pipe';
@@ -27,7 +26,6 @@ const ROUTES: Routes = [
       { path: 'home', component: RecipeListComponent },
       { path: 'add', component: AddRecipeComponent },
       { path: 'recipe/:id', component: EditRecipeComponent },
-      { path: 'delete', component: DeleteRecipeComponent },
       { path: 'profile', component: ProfileComponent },
     ]
   }
@@ -39,7 +37,6 @@ const ROUTES: Routes = [
     LayoutComponent,
     AddRecipeComponent,
     EditRecipeComponent,
-    DeleteRecipeComponent,
     RecipeListComponent,
 
     HighlightPipe,

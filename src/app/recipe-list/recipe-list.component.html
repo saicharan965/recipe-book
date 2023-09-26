@@ -32,8 +32,11 @@
                 </span>
               </li>
             </ul>
-            <span class="d-flex justify-content-center">
-              <a [routerLink]="['/recipe', recipe.recipeId]" class="btn btn-primary">View More</a>
+            <span class="d-flex justify-content-between">
+              <a [routerLink]="['/recipe', recipe.recipeId]" class="btn btn-outline-primary">View More <i
+                  class="bi bi-arrow-up-right-circle-fill ms-2"></i></a>
+              <a class="btn btn-outline-danger" (click)="deleteRecipe(recipe.recipeId)">Delete <i
+                  class="bi bi-trash3-fill ms-2"></i></a>
             </span>
           </div>
         </div>
@@ -42,9 +45,17 @@
   </ng-container>
 </ng-container>
 
+<ng-template #zeroState>
+  <div class="text-center my-5 p-5 container rounded-3" style="background-color: #A9CCE3;">
+    <img src="assets/inappimages/noRecipes.jpg" alt="No Recipes Found" class="img-fluid mb-4 rounded-circle" width="150"
+      height="150">
+    <h2 class="mb-3">No recipes found</h2>
+    <p class="mb-4">It looks like you haven't added any recipes yet.</p>
+    <a routerLink="/add" class="btn btn-outline-primary">Add Your First Recipe <i
+        class="bi bi-plus-circle ms-2"></i></a>
+  </div>
+</ng-template>
+
 <ng-template #spinner>
   <recipe-ui-spinner></recipe-ui-spinner>
-</ng-template>
-<ng-template #zeroState>
-  Create a new Recipe template here
 </ng-template>

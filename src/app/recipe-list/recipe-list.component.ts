@@ -35,6 +35,13 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.filteredRecipes = this.recipes
   }
 
+  protected deleteRecipe(recipeId: number) {
+    this.apiService.deleteRecipe(recipeId).pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe({
+      next: (recipes: Recipe[]) => {
+      },
+    })
+  }
+
   public ngOnDestroy(): void {
     this.unsubscribe$.next()
     this.unsubscribe$.complete()
