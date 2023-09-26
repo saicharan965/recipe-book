@@ -5,18 +5,12 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  ingredients: [
-    {
-      name: String,
-      quantity: Number,
-      unit: String,
-    },
-  ],
+  ingredients: [String],
   instructions: {
     type: String,
     required: true,
   },
-  id: {
+  recipeId: {
     type: Number,
     required: true,
   },
@@ -41,7 +35,13 @@ const recipeSchema = new mongoose.Schema({
   allergens: [String],
 });
 
+const userSchema = new mongoose.Schema({
+  userId: String,
+  recipes: [recipeSchema],
+});
+
 // Create a Mongoose model using the schema
 const Recipe = mongoose.model("Recipe", recipeSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = Recipe;
+module.exports = { Recipe, User };

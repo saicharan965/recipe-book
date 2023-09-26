@@ -19,12 +19,12 @@ export class RecipeApiService {
     return this.http.get<Recipe>(`${this.apiUrl}/${id}`);
   }
 
-  addRecipe(recipe: Recipe): Observable<any> {
-    return this.http.post<Recipe>(`${this.apiUrl}`, recipe);
+  addRecipe(recipeId:number): Observable<any> {
+    return this.http.post<Recipe>(`${this.apiUrl}`, recipeId);
   }
 
   updateRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`${this.apiUrl}/${recipe.id}`, recipe);
+    return this.http.put<Recipe>(`${this.apiUrl}/${recipe.recipeId}`, recipe);
   }
 
   deleteRecipe(id: number): Observable<any> {

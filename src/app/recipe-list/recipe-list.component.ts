@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, finalize, takeUntil } from 'rxjs';
 import { Recipe } from '../api/api.models';
 import { RecipeApiService } from '../api/recipe-api.service';
 
@@ -18,15 +18,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   constructor(private apiService: RecipeApiService) { }
   public ngOnInit(): void {
-    this.apiService.getAllRecipes().pipe(takeUntil(this.unsubscribe$)).subscribe({
+    this.apiService.getAllRecipes().pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe({
       next: (recipes: Recipe[]) => {
         this.recipes = recipes
         this.filteredRecipes = recipes
-        this.isLoading = false
       },
-      error: (err) => {
-        console.log(err)
-      }
     })
   }
 

@@ -11,7 +11,7 @@ export class AddRecipeComponent {
   protected recipeForm!: FormGroup
   constructor(private fb: FormBuilder, private apiService: RecipeApiService) {
     this.recipeForm = this.fb.group({
-      id: ['', Validators.required],
+      recipeId: ['', Validators.required],
       title: ['', Validators.required],
       ingredients: [[]],
       instructions: ['', Validators.required],
@@ -41,7 +41,7 @@ export class AddRecipeComponent {
 
   private formatFormData(formData: any): any {
     const formattedRecipe = {
-      id: formData.id,
+      recipeId: formData.recipeId,
       title: formData.title,
       ingredients: formData.ingredients.split(',').map((ingredient: string) => ingredient.trim()),
       instructions: formData.instructions,

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeApiService } from '../api/recipe-api.service';
 import { Subject, finalize, takeUntil } from 'rxjs';
-import { Ingredient, Recipe } from '../api/api.models';
+import { Recipe } from '../api/api.models';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -21,7 +21,7 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.editRecipeForm = this.formBuilder.group({
-        id: ['', Validators.required],
+        recipeId: ['', Validators.required],
         title: ['', Validators.required],
         ingredients: [],
         instructions: ['', Validators.required],
@@ -57,9 +57,9 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
 
   private populateForm(recipeData: Recipe) {
     this.editRecipeForm.patchValue({
-      id: recipeData.id,
+      recipeId: recipeData.recipeId,
       title: recipeData.title,
-      ingredients: [],
+      ingredients: recipeData.ingredients,
       instructions: recipeData.instructions,
       preparationTime: recipeData.preparationTime,
       cookingTime: recipeData.cookingTime,
@@ -75,10 +75,6 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
       tags: recipeData.tags.join(', '),
       allergens: recipeData.allergens.join(', '),
     });
-    const ingredientsControl = this.editRecipeForm.controls['ingredients'].value
-    recipeData.ingredients.forEach((ingredient: Ingredient) => {
-      ingredientsControl.push(ingredient.name)
-    })
   }
 
   protected onSubmit(): void {

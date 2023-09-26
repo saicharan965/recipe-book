@@ -2,7 +2,7 @@
     <!-- Id -->
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Id</span>
-        <input type="text" class="form-control" placeholder="Recipe Id" id="Id" formControlName="id">
+        <input type="text" class="form-control" placeholder="Recipe Id" id="recipeId" formControlName="recipeId">
     </div>
     <!-- Title -->
     <div class="input-group mb-3">
@@ -117,7 +117,7 @@
     </div>
 </form>
 <div class="d-flex justify-content-center my-2">
-    <button class="btn btn-outline-success" [disabled]="!recipeForm.valid" type="button" (click)="addRecipe()">
+    <button class="btn btn-outline-success" type="button" [disabled]="!recipeForm.valid" (click)="addRecipe()">
         <i class="bi bi-plus-lg me-1"></i> Add Recipe
     </button>
 </div>

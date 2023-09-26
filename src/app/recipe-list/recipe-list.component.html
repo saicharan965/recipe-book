@@ -1,46 +1,50 @@
 <ng-container *ngIf="!isLoading;else spinner">
-  <div class="container input-group my-3">
-    <input type="text" class="form-control form-control-lg" placeholder="Search Recipes" [(ngModel)]="searchTerm"
-      (ngModelChange)="searchRecipes()">
-    <span class="input-group-text bg-info" id="search-recipes">
-      <i class="bi bi-search"></i>
-    </span>
-    <button class="input-group-text bg-danger" id="clear-search" (click)="resetFilters()">
-      <i class="bi bi-x"></i>
-    </button>
-  </div>
-  <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of filteredRecipes">
-      <div class="card mb-4 shadow hover d-flex flex-column">
-        <div class="card-body">
-          <div class="d-flex align-items-center">
-            <div class="rounded overflow-hidden profile-picture">
-              <img [src]="'assets/images/' + recipe.thumbnailImage" alt="{{ recipe.title }}" class="img-fluid"
-                style="width: 150px; height: 100px;" />
+  <ng-container *ngIf="recipes && recipes.length >0;else zeroState">
+    <div class="container input-group my-3">
+      <input type="text" class="form-control form-control-lg" placeholder="Search Recipes" [(ngModel)]="searchTerm"
+        (ngModelChange)="searchRecipes()">
+      <span class="input-group-text bg-info" id="search-recipes">
+        <i class="bi bi-search"></i>
+      </span>
+      <button class="input-group-text bg-danger" id="clear-search" (click)="resetFilters()">
+        <i class="bi bi-x"></i>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of filteredRecipes">
+        <div class="card mb-4 shadow hover d-flex flex-column">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="rounded overflow-hidden profile-picture">
+                <img [src]="'assets/images/' + recipe.thumbnailImage" alt="{{ recipe.title }}" class="img-fluid"
+                  style="width: 150px; height: 100px;" />
+              </div>
+              <h5 class="ms-3" [innerHtml]="recipe.title | highlight: searchTerm">{{ recipe.title }}</h5>
             </div>
-            <h5 class="ms-3" [innerHtml]="recipe.title | highlight: searchTerm">{{ recipe.title }}</h5>
+            <p class="card-text text-truncate max-lines-3">{{ recipe.instructions }}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
+              <li class="list-group-item">
+                <strong>Ratings:</strong>
+                <span class="star-rating ms-2">
+                  <span *ngFor="let star of stars" class="bi px-1"
+                    [ngClass]="{'bi-star-fill': star <= calculateAverageRating(recipe.ratings), 'bi-star': star > calculateAverageRating(recipe.ratings)}"></span>
+                </span>
+              </li>
+            </ul>
+            <span class="d-flex justify-content-center">
+              <a [routerLink]="['/recipe', recipe.recipeId]" class="btn btn-primary">View More</a>
+            </span>
           </div>
-          <p class="card-text text-truncate max-lines-3">{{ recipe.instructions }}</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
-            <li class="list-group-item">
-              <strong>Ratings:</strong>
-              <span class="star-rating ms-2">
-                <span *ngFor="let star of stars" class="bi px-1"
-                  [ngClass]="{'bi-star-fill': star <= calculateAverageRating(recipe.ratings), 'bi-star': star > calculateAverageRating(recipe.ratings)}"></span>
-              </span>
-            </li>
-          </ul>
-          <span class="d-flex justify-content-center">
-            <a [routerLink]="['/recipe', recipe.id]" class="btn btn-primary">View More</a>
-          </span>
         </div>
       </div>
     </div>
-  </div>
-
+  </ng-container>
 </ng-container>
 
 <ng-template #spinner>
   <recipe-ui-spinner></recipe-ui-spinner>
+</ng-template>
+<ng-template #zeroState>
+  Create a new Recipe template here
 </ng-template>
