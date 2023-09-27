@@ -16,6 +16,7 @@ import { TokenInterceptor } from '../auth/token.interceptor';
 import { environment } from '../env/env.local';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ExploreRecipesComponent } from './explore-recipes/explore-recipes.component';
 
 const ROUTES: Routes = [
   {
@@ -25,6 +26,7 @@ const ROUTES: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: RecipeListComponent },
       { path: 'add', component: AddRecipeComponent },
+      { path: 'explore', component: ExploreRecipesComponent },
       { path: 'recipe/:id', component: EditRecipeComponent },
       { path: 'profile', component: ProfileComponent },
     ]
@@ -41,7 +43,8 @@ const ROUTES: Routes = [
 
     HighlightPipe,
     SpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExploreRecipesComponent
   ],
   imports: [
     BrowserModule,
