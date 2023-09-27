@@ -10,7 +10,7 @@
         <i class="bi bi-x"></i>
       </button>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="filteredRecipes && filteredRecipes.length >0; else noResults">
       <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of filteredRecipes">
         <div class="card mb-4 shadow hover d-flex flex-column">
           <div class="card-body">
@@ -47,12 +47,22 @@
 
 <ng-template #zeroState>
   <div class="text-center my-5 p-5 container rounded-3" style="background-color: #A9CCE3;">
-    <img src="assets/inappimages/noRecipes.jpg" alt="No Recipes Found" class="img-fluid mb-4 rounded-circle" width="150"
+    <img src="assets/inappimages/zeroState.jpg" alt="No Recipes Found" class="img-fluid mb-4 rounded-circle" width="150"
       height="150">
     <h2 class="mb-3">No recipes found</h2>
     <p class="mb-4">It looks like you haven't added any recipes yet.</p>
     <a routerLink="/add" class="btn btn-outline-primary">Add Your First Recipe <i
         class="bi bi-plus-circle ms-2"></i></a>
+  </div>
+</ng-template>
+<ng-template #noResults>
+  <div class="text-center my-5 p-5 container rounded-3 bg-danger-subtle">
+    <img src="assets/inappimages/noResults.png" alt="No Recipes Found" class="img-fluid mb-4 rounded-circle" width="150"
+      height="150">
+    <h2 class="mb-3">No recipes found with the title <span class="text-danger">{{searchTerm}}</span></h2>
+    <p class="mb-4">Your flavor hunt found no matches. Keep exploring...</p>
+    <a class="btn btn-outline-danger" (click)="resetFilters()">Clear Filters<i
+        class="bi bi-arrow-counterclockwise"></i></a>
   </div>
 </ng-template>
 

@@ -42,10 +42,14 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     })
   }
 
-  public ngOnDestroy(): void {
-    this.unsubscribe$.next()
-    this.unsubscribe$.complete()
+  protected rateRecipe(recipeId: number, ratingIndex: number) {
+    this.apiService.addRating(recipeId, ratingIndex + 1).pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+    })
   }
+
 
   protected calculateAverageRating(ratings: number[]): number {
     if (!ratings || ratings.length === 0) {
@@ -54,5 +58,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     const totalRatings = ratings.reduce((sum, rating) => sum + rating, 0);
     const averageRating = totalRatings / ratings.length;
     return averageRating;
+  }
+
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next()
+    this.unsubscribe$.complete()
   }
 }
