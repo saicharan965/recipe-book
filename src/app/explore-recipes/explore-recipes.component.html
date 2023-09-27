@@ -1,7 +1,42 @@
-<div class="text-center my-5 p-5 container rounded-3 bg-danger-subtle">
-    <img src="assets/inappimages/noResults.png" alt="No Recipes Found" class="img-fluid mb-4 rounded-circle" width="150"
-        height="150">
-    <h2 class="mb-3">UNDER CONSTRUCTION</h2>
-    <a class="btn btn-outline-danger" routerLinkActive="active" routerLink="../home"><i class="bi bi-house-door me-1"></i>
-        Take me home</a>
+<div class="container-fluid mt-3">
+    <div class="row d-flex justify-content-between align-items-center bg-dark-subtle p-5 rounded-4">
+        <div class="col-md-6">
+            <img src="../../assets//inappimages/exploreFood.png" alt="Explore Recipes" class="img-fluid rounded-4">
+        </div>
+        <div class="col-md-6">
+            <h1>Welcome to Explore Recipes</h1>
+            <p>Discover Delicious Delights with our new feature, <span class="text-primary fs-5">Explore Recipes</span>
+            </p>
+            <span class="h3 fw-light">Scroll Down for More Recipes
+                <i class="bi bi-arrow-down-circle h3"></i>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="mt-4 row">
+        <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of recipes">
+            <div class="card mb-4 shadow hover d-flex flex-column">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded overflow-hidden profile-picture">
+                            <img [src]="'assets/images/' + recipe.thumbnailImage" alt="{{ recipe.title }}"
+                                class="img-fluid" style="width: 150px; height: 100px;" />
+                        </div>
+                        <h5 class="ms-3">{{ recipe.title }}</h5>
+                    </div>
+                    <p class="card-text text-truncate max-lines-3">{{ recipe.instructions }}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
+
+                    </ul>
+                    <span class="d-flex justify-content-between">
+                        <a [routerLink]="['/recipe', recipe.recipeId]" class="btn btn-outline-primary">View More <i
+                                class="bi bi-arrow-up-right-circle-fill ms-2"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
