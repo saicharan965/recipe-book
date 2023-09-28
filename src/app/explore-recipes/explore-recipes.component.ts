@@ -1,152 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RecipeApiService } from '../api/recipe-api.service';
+import { Subject, finalize, takeUntil } from 'rxjs';
+import { Recipe } from '../api/api.models';
 
 @Component({
   selector: 'app-explore-recipes',
   templateUrl: './explore-recipes.component.html',
   styleUrls: ['./explore-recipes.component.scss']
 })
-export class ExploreRecipesComponent {
-  recipes = [
-    {
-      "title": "Vegan Pad Thai",
-      "ingredients": [
-        "Rice noodles (8 ounces)",
-        "Firm tofu (200g)",
-        "Bean sprouts (1 cup)",
-        "Carrots (2 medium)",
-        "Peanuts (1 cup)"
-      ],
-      "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
-      "recipeId": 10,
-      "preparationTime": "20 minutes",
-      "cookingTime": "15 minutes",
-      "servings": 4,
-      "calories": 320,
-      "fat": 14,
-      "protein": 12,
-      "carbohydrates": 40,
-      "cuisine": "Thai",
-      "category": "Vegetarian",
-      "difficulty": "Medium",
-      "thumbnailImage": "vegan-pad-thai.jpg",
-      "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
-      "tags": ["Thai", "Vegetarian", "Noodles"],
-      "ratings": [5, 4],
-      "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
-      "allergens": ["Peanuts", "Soy"]
-    },
-    {
-      "title": "Vegan Pad Thai",
-      "ingredients": [
-        "Rice noodles (8 ounces)",
-        "Firm tofu (200g)",
-        "Bean sprouts (1 cup)",
-        "Carrots (2 medium)",
-        "Peanuts (1 cup)"
-      ],
-      "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
-      "recipeId": 10,
-      "preparationTime": "20 minutes",
-      "cookingTime": "15 minutes",
-      "servings": 4,
-      "calories": 320,
-      "fat": 14,
-      "protein": 12,
-      "carbohydrates": 40,
-      "cuisine": "Thai",
-      "category": "Vegetarian",
-      "difficulty": "Medium",
-      "thumbnailImage": "vegan-pad-thai.jpg",
-      "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
-      "tags": ["Thai", "Vegetarian", "Noodles"],
-      "ratings": [5, 4],
-      "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
-      "allergens": ["Peanuts", "Soy"]
-    },
-    {
-      "title": "Vegan Pad Thai",
-      "ingredients": [
-        "Rice noodles (8 ounces)",
-        "Firm tofu (200g)",
-        "Bean sprouts (1 cup)",
-        "Carrots (2 medium)",
-        "Peanuts (1 cup)"
-      ],
-      "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
-      "recipeId": 10,
-      "preparationTime": "20 minutes",
-      "cookingTime": "15 minutes",
-      "servings": 4,
-      "calories": 320,
-      "fat": 14,
-      "protein": 12,
-      "carbohydrates": 40,
-      "cuisine": "Thai",
-      "category": "Vegetarian",
-      "difficulty": "Medium",
-      "thumbnailImage": "vegan-pad-thai.jpg",
-      "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
-      "tags": ["Thai", "Vegetarian", "Noodles"],
-      "ratings": [5, 4],
-      "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
-      "allergens": ["Peanuts", "Soy"]
-    },
-    {
-      "title": "Vegan Pad Thai",
-      "ingredients": [
-        "Rice noodles (8 ounces)",
-        "Firm tofu (200g)",
-        "Bean sprouts (1 cup)",
-        "Carrots (2 medium)",
-        "Peanuts (1 cup)"
-      ],
-      "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
-      "recipeId": 10,
-      "preparationTime": "20 minutes",
-      "cookingTime": "15 minutes",
-      "servings": 4,
-      "calories": 320,
-      "fat": 14,
-      "protein": 12,
-      "carbohydrates": 40,
-      "cuisine": "Thai",
-      "category": "Vegetarian",
-      "difficulty": "Medium",
-      "thumbnailImage": "vegan-pad-thai.jpg",
-      "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
-      "tags": ["Thai", "Vegetarian", "Noodles"],
-      "ratings": [5, 4],
-      "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
-      "allergens": ["Peanuts", "Soy"]
-    },
-    {
-      "title": "Vegan Pad Thai",
-      "ingredients": [
-        "Rice noodles (8 ounces)",
-        "Firm tofu (200g)",
-        "Bean sprouts (1 cup)",
-        "Carrots (2 medium)",
-        "Peanuts (1 cup)"
-      ],
-      "instructions": "Cook rice noodles. Sauté tofu, bean sprouts, and carrots. Toss with cooked noodles and peanuts. Serve with a peanut sauce.",
-      "recipeId": 10,
-      "preparationTime": "20 minutes",
-      "cookingTime": "15 minutes",
-      "servings": 4,
-      "calories": 320,
-      "fat": 14,
-      "protein": 12,
-      "carbohydrates": 40,
-      "cuisine": "Thai",
-      "category": "Vegetarian",
-      "difficulty": "Medium",
-      "thumbnailImage": "vegan-pad-thai.jpg",
-      "stepImages": ["step1.jpg", "step2.jpg", "step3.jpg"],
-      "tags": ["Thai", "Vegetarian", "Noodles"],
-      "ratings": [5, 4],
-      "reviews": ["Delicious vegan dish!", "A flavorful Thai classic."],
-      "allergens": ["Peanuts", "Soy"]
-    }
-  ]
+export class ExploreRecipesComponent implements OnInit, OnDestroy {
+  protected isLoading: boolean = true
+  private unsubscribe$: Subject<void> = new Subject()
+  recipes!: Recipe[]
+  constructor(private apiService: RecipeApiService) { }
 
+  public ngOnInit(): void {
+    this.apiService.getExploreRecipes().pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe(recipes =>{
+      this.recipes = recipes
+    })
+  }
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next()
+    this.unsubscribe$.complete()
+  }
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3">
     <div class="row d-flex justify-content-between align-items-center bg-dark-subtle p-5 rounded-4">
         <div class="col-md-6">
-            <img src="../../assets//inappimages/exploreFood.png" alt="Explore Recipes" class="img-fluid rounded-4">
+            <img src="../../assets/inappimages/exploreFood.png" alt="Explore Recipes" class="img-fluid rounded-4">
         </div>
         <div class="col-md-6">
             <h1>Welcome to Explore Recipes</h1>
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="recipes; else spinner">
     <div class="mt-4 row">
         <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of recipes">
             <div class="card mb-4 shadow hover d-flex flex-column">
@@ -38,5 +38,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<ng-template #spinner>
+    <recipe-ui-spinner></recipe-ui-spinner>
+</ng-template>

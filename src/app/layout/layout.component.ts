@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { Subject, takeUntil } from 'rxjs';
+import { RecipeApiService } from '../api/recipe-api.service';
 
 @Component({
   selector: 'app-layout',
@@ -12,7 +13,9 @@ export class LayoutComponent {
   protected isLoggedIn = false
   user?: User
   private unsubscribe$: Subject<void> = new Subject()
-  constructor(private authService: AuthService, @Inject(DOCUMENT) public document: Document,) { }
+  constructor(private authService: AuthService, @Inject(DOCUMENT) public document: Document, private apiService: RecipeApiService) {
+    this.apiService.createOrGetUser().pipe(takeUntil(this.unsubscribe$)).subscribe(res => console.log(res))
+  }
 
   protected logout() {
     this.authService.logout({ logoutParams: { returnTo: document.location.origin } });

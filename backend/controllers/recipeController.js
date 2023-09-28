@@ -1,5 +1,22 @@
 const { Recipe, User } = require("../models/mongoose.models");
 
+exports.createOrGetUser = async (req, res) => {
+  try {
+    const userId = req.userId;
+    let user = await User.findOne({ userId });
+
+    if (!user) {
+      user = new User({ userId });
+      user.recipes = [];
+    }
+    await user.save();
+    res.status(201).json({ status: "success" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error });
+  }
+};
+
 exports.addRecipe = async (req, res) => {
   try {
     const userId = req.userId;
@@ -93,6 +110,23 @@ exports.updateRecipe = async (req, res) => {
     } else {
       res.status(404).json({ message: "Recipe not found" });
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.getAllUserRecipes = async (req, res) => {
+  try {
+    const allUsers = await User.find();
+    let allRecipes = [];
+    if (allUsers.length > 0) {
+      allUsers.forEach((x) => {
+        if (x.recipes.length > 0)
+          x.recipes.forEach((recipe) => allRecipes.push(recipe));
+      });
+    }
+    res.status(200).json(allRecipes);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
