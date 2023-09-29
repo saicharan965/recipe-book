@@ -38,9 +38,10 @@
                                 class="bi bi-arrow-up-right-circle-fill ms-2"></i></a>
                     </span>
                     <hr>
-                    <span class="d-flex mt-2 rounded p-1">
+                    <span class="d-flex mt-2 rounded p-1 flex-wrap">
                         Posted by :<span
-                            class="badge bg-warning-subtle text-dark ms-2 d-flex align-items-center">{{exploreRecipe.postedBy}}</span>
+                            class="badge bg-warning-subtle text-dark ms-2 d-flex align-items-center">{{exploreRecipe.postedBy
+                            | trimAtTheRate}}</span>
                     </span>
                 </div>
             </div>

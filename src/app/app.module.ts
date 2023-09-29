@@ -17,6 +17,7 @@ import { environment } from '../env/env.local';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ExploreRecipesComponent } from './explore-recipes/explore-recipes.component';
+import { RemoveAfterAtPipe } from './shared/trimAtTheRate.pipe';
 
 const ROUTES: Routes = [
   {
@@ -40,11 +41,13 @@ const ROUTES: Routes = [
     AddRecipeComponent,
     EditRecipeComponent,
     RecipeListComponent,
-
-    HighlightPipe,
     SpinnerComponent,
     ProfileComponent,
-    ExploreRecipesComponent
+    ExploreRecipesComponent,
+
+    HighlightPipe,
+    RemoveAfterAtPipe
+
   ],
   imports: [
     BrowserModule,

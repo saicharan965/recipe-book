@@ -10,11 +10,13 @@ import { RecipeApiService } from '../api/recipe-api.service';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   protected isLoading: boolean = true
+  protected activeTags: string[] = [];
   protected recipes!: Recipe[]
   protected filteredRecipes!: Recipe[]
   protected stars: number[] = [1, 2, 3, 4, 5];
   private unsubscribe$: Subject<void> = new Subject()
   protected searchTerm!: string
+  protected filterTags: string[] = []
 
   constructor(private apiService: RecipeApiService) { }
   public ngOnInit(): void {
@@ -22,6 +24,9 @@ export class RecipeListComponent implements OnInit, OnDestroy {
       next: (recipes: Recipe[]) => {
         this.recipes = recipes
         this.filteredRecipes = recipes
+        recipes.forEach(recipe => recipe.tags.forEach(tag => {
+          if (!this.filterTags.includes(tag)) this.filterTags.push(tag)
+        }))
       },
     })
   }
@@ -33,6 +38,25 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   protected resetFilters() {
     this.searchTerm = ''
     this.filteredRecipes = this.recipes
+  }
+
+  protected clearTags() {
+    this.activeTags = []
+    this.filteredRecipes = this.recipes
+  }
+
+  protected filterRecipesByTag(tag: string) {
+    const index = this.activeTags.indexOf(tag);
+    if (index !== -1) {
+      this.activeTags.splice(index, 1);
+    } else {
+      this.activeTags.push(tag);
+    }
+    this.filteredRecipes = this.activeTags.length === 0 ? this.recipes : this.recipes.filter((recipe) => {
+      return this.activeTags.some((activeTag) =>
+        recipe.tags.includes(activeTag)
+      );
+    });
   }
 
   protected deleteRecipe(recipeId: number) {
