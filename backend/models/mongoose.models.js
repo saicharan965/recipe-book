@@ -35,13 +35,20 @@ const recipeSchema = new mongoose.Schema({
   allergens: [String],
 });
 
+const userDetailsSchema = new mongoose.Schema({
+  userMaild: String,
+  userPhoto: String,
+});
+
 const userSchema = new mongoose.Schema({
   userId: String,
+  userDetails: userDetailsSchema,
   recipes: [recipeSchema],
 });
 
-// Create a Mongoose model using the schema
+
 const Recipe = mongoose.model("Recipe", recipeSchema);
 const User = mongoose.model("User", userSchema);
+const userDetails = mongoose.model("userDetails", userDetailsSchema);
 
-module.exports = { Recipe, User };
+module.exports = { Recipe, User,userDetails };

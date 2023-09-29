@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { EMPTY, Subject, takeUntil } from 'rxjs';
 import { RecipeApiService } from '../api/recipe-api.service';
+import { UserDetails } from '../api/api.models';
 
 @Component({
   selector: 'app-layout',
@@ -14,10 +15,7 @@ export class LayoutComponent {
   user?: User
   private unsubscribe$: Subject<void> = new Subject()
   constructor(private authService: AuthService, @Inject(DOCUMENT) public document: Document, private apiService: RecipeApiService) {
-    this.apiService.createOrGetUser().pipe(takeUntil(this.unsubscribe$)).subscribe({
-      next: () => EMPTY,
-      error: (err) => console.log(err)
-    })
+
   }
 
   protected logout() {
@@ -31,8 +29,15 @@ export class LayoutComponent {
         this.authService.loginWithRedirect()
       }
     })
-    this.authService.user$.pipe(takeUntil(this.unsubscribe$)).subscribe(user =>
-      this.user = user ? user : undefined)
+    this.authService.user$.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
+      this.user = user ? user : undefined
+      const userDetails: UserDetails = { userMaild: user?.email, userPhoto: user?.picture }
+      this.apiService.createOrGetUser(userDetails).pipe(takeUntil(this.unsubscribe$)).subscribe({
+        next: () => EMPTY,
+        error: (err) => console.log(err)
+      })
+    }
+    )
   }
   public ngOnDestroy(): void {
     this.unsubscribe$.next()

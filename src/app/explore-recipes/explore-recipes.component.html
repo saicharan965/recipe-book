@@ -13,26 +13,34 @@
         </div>
     </div>
 </div>
-<div class="container-fluid" *ngIf="recipes; else spinner">
+<div class="container-fluid" *ngIf="exploreRecipes; else spinner">
     <div class="mt-4 row">
-        <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let recipe of recipes">
+        <div class="col-lg-3 col-md-6 col-sm-10" *ngFor="let exploreRecipe of exploreRecipes">
             <div class="card mb-4 shadow hover d-flex flex-column">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="rounded overflow-hidden profile-picture">
-                            <img [src]="'assets/images/' + recipe.thumbnailImage" alt="{{ recipe.title }}"
-                                class="img-fluid" style="width: 150px; height: 100px;" />
+                            <img [src]="'assets/images/' + exploreRecipe.recipe.thumbnailImage"
+                                alt="{{ exploreRecipe.recipe.title }}" class="img-fluid"
+                                style="width: 150px; height: 100px;" />
                         </div>
-                        <h5 class="ms-3">{{ recipe.title }}</h5>
+                        <h5 class="ms-3">{{ exploreRecipe.recipe.title }}</h5>
                     </div>
-                    <p class="card-text text-truncate max-lines-3">{{ recipe.instructions }}</p>
+                    <p class="card-text text-truncate max-lines-3">{{ exploreRecipe.recipe.instructions }}</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Cooking Time:</strong> {{ recipe.cookingTime }}</li>
+                        <li class="list-group-item"><strong>Cooking Time:</strong> {{ exploreRecipe.recipe.cookingTime
+                            }}</li>
 
                     </ul>
                     <span class="d-flex justify-content-between">
-                        <a [routerLink]="['/recipe', recipe.recipeId]" class="btn btn-outline-primary">View More <i
+                        <a [routerLink]="['/recipe', exploreRecipe.recipe.recipeId]"
+                            class="btn btn-outline-primary">View More <i
                                 class="bi bi-arrow-up-right-circle-fill ms-2"></i></a>
+                    </span>
+                    <hr>
+                    <span class="d-flex mt-2 rounded p-1">
+                        Posted by :<span
+                            class="badge bg-warning-subtle text-dark ms-2 d-flex align-items-center">{{exploreRecipe.postedBy}}</span>
                     </span>
                 </div>
             </div>

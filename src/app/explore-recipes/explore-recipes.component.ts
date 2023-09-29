@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RecipeApiService } from '../api/recipe-api.service';
 import { Subject, finalize, takeUntil } from 'rxjs';
-import { Recipe } from '../api/api.models';
+import { Recipe, exploreRecipes } from '../api/api.models';
 
 @Component({
   selector: 'app-explore-recipes',
@@ -11,13 +11,11 @@ import { Recipe } from '../api/api.models';
 export class ExploreRecipesComponent implements OnInit, OnDestroy {
   protected isLoading: boolean = true
   private unsubscribe$: Subject<void> = new Subject()
-  recipes!: Recipe[]
+  exploreRecipes!: exploreRecipes[]
   constructor(private apiService: RecipeApiService) { }
 
   public ngOnInit(): void {
-    this.apiService.getExploreRecipes().pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe(recipes =>{
-      this.recipes = recipes
-    })
+    this.apiService.getExploreRecipes().pipe(takeUntil(this.unsubscribe$), finalize(() => this.isLoading = false)).subscribe((exploreRecipes: exploreRecipes[]) => this.exploreRecipes = exploreRecipes)
   }
   public ngOnDestroy(): void {
     this.unsubscribe$.next()

@@ -20,3 +20,13 @@ export interface Recipe {
     reviews: string[];
     allergens: string[];
 }
+
+export interface UserDetails {
+    userMaild?: string,
+    userPhoto?: string
+}
+
+export interface exploreRecipes {
+    postedBy: string,
+    recipe: Recipe
+}

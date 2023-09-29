@@ -2,7 +2,7 @@ import { environment } from './../../env/env.local';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recipe } from './api.models';
+import { Recipe, UserDetails, exploreRecipes } from './api.models';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class RecipeApiService {
   }
 
   getExploreRecipes(): Observable<any[]> {
-    return this.http.get<Recipe[]>(`${this.apiUrl}/allRecipes`);
+    return this.http.get<exploreRecipes[]>(`${this.apiUrl}/allRecipes`);
   }
 
-  createOrGetUser(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/createOrGetUser`);
+  createOrGetUser(userDetails:UserDetails): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/createOrGetUser`, userDetails);
   }
 
   getRecipeById(id: number): Observable<any> {

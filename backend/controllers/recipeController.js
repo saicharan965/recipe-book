@@ -1,12 +1,13 @@
-const { Recipe, User } = require("../models/mongoose.models");
+const { Recipe, User, userDetails } = require("../models/mongoose.models");
 
 exports.createOrGetUser = async (req, res) => {
   try {
     const userId = req.userId;
+    const userDetails = req.body;
     let user = await User.findOne({ userId });
-
     if (!user) {
       user = new User({ userId });
+      user.userDetails = userDetails;
       user.recipes = [];
     }
     await user.save();
@@ -123,7 +124,12 @@ exports.getAllUserRecipes = async (req, res) => {
     if (allUsers.length > 0) {
       allUsers.forEach((x) => {
         if (x.recipes.length > 0)
-          x.recipes.forEach((recipe) => allRecipes.push(recipe));
+          x.recipes.forEach((recipe) => {
+            allRecipes.push({
+              recipe: recipe,
+              postedBy: x.userDetails.userMaild,
+            });
+          });
       });
     }
     res.status(200).json(allRecipes);
