@@ -19,7 +19,11 @@ export class RecipeApiService {
     return this.http.get<exploreRecipes[]>(`${this.apiUrl}/allRecipes`);
   }
 
-  createOrGetUser(userDetails:UserDetails): Observable<any> {
+  getOtherUsersRecipe(recipeId: string, email: string, oauthId: string): Observable<Recipe> {
+    return this.http.post<Recipe>(`${this.apiUrl}/getOtherUsersRecipe`, { email: email, recipeId: recipeId, oauthId: oauthId });
+  }
+
+  createOrGetUser(userDetails: UserDetails): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/createOrGetUser`, userDetails);
   }
 

@@ -28,5 +28,6 @@ export interface UserDetails {
 
 export interface exploreRecipes {
     postedBy: string,
-    recipe: Recipe
+    recipe: Recipe,
+    oauthId: string
 }

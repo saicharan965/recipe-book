@@ -1,4 +1,4 @@
-const { Recipe, User, userDetails } = require("../models/mongoose.models");
+const { Recipe, User } = require("../models/mongoose.models");
 
 exports.createOrGetUser = async (req, res) => {
   try {
@@ -128,11 +128,35 @@ exports.getAllUserRecipes = async (req, res) => {
             allRecipes.push({
               recipe: recipe,
               postedBy: x.userDetails.userMaild,
+              oauthId: btoa(x.userId),
             });
           });
       });
     }
     res.status(200).json(allRecipes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.getOtherUsersRecipe = async (req, res) => {
+  const userEmail = req.body.email;
+  const recipeId = req.body.recipeId;
+  const oauthId = atob(req.body.oauthId);
+  console.log(recipeId, userEmail);
+  try {
+    const user = await User.findOne({ userId: oauthId });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const recipe = user.recipes.find((r) => r.recipeId == recipeId);
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).json({ message: "Recipe not found" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });

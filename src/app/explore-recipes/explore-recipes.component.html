@@ -28,12 +28,12 @@
                     </div>
                     <p class="card-text text-truncate max-lines-3">{{ exploreRecipe.recipe.instructions }}</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Cooking Time:</strong> {{ exploreRecipe.recipe.cookingTime
-                            }}</li>
+                        <li class="list-group-item ps-0 my-1"><strong>Cooking Time:</strong> <span class="badge bg-info-subtle p-2 text-dark ms-2">
+                                {{ exploreRecipe.recipe.cookingTime}}</span></li>
 
                     </ul>
                     <span class="d-flex justify-content-between">
-                        <a [routerLink]="['/recipe', exploreRecipe.recipe.recipeId]"
+                        <a (click)="routeToOtherUsersRecipe(exploreRecipe.recipe.recipeId,exploreRecipe.postedBy,exploreRecipe.oauthId)"
                             class="btn btn-outline-primary">View Details <i
                                 class="bi bi-arrow-up-right-circle-fill ms-2"></i></a>
                     </span>

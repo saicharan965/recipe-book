@@ -1,0 +1,111 @@
+<div class="container-fluid" *ngIf="!isLoading;else spinner
+">
+    <div class="card">
+        <div class="card-body">
+            <div class="row d-flex flex-wrap bg-success-subtle rounded-3 py-2">
+                <div
+                    class="col-6 d-none justify-content-center align-items-center d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex">
+                    <h5 class="card-title fs-1 fw-bolder">{{ recipe.title }}</h5>
+
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <img [src]="'assets/images/' + recipe.thumbnailImage" class="img-fluid rounded-5" alt="Recipe Image"
+                        style="max-width: 300px; max-height: 200px;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 m-2 p-3">
+                <span class="fw-bold me-3">TAGS :</span> <span *ngFor="let tag of recipe.tags"
+                    class="badge bg-primary me-2">{{ tag
+                    }}</span>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Category:</span>
+                        <span class="p-2 bg-danger-subtle rounded-2">{{ recipe.category }}</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Difficulty:</span>
+                        <span [ngClass]="{
+                            'bg-success-subtle': recipe.difficulty === 'Easy',
+                            'bg-warning-subtle': recipe.difficulty === 'Medium',
+                            'bg-danger-subtle': recipe.difficulty === 'Hard'
+                        }" class="p-2 rounded-2">{{ recipe.difficulty }}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Servings:</span>
+                        <span class="p-2 rounded-2">{{ recipe.servings }}</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Preparation Time:</span>
+                        <span class="p-2 rounded-2">{{ recipe.preparationTime }}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Cooking Time:</span>
+                        <span class="p-2 rounded-2">{{ recipe.cookingTime }}</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Calories:</span>
+                        <span class="p-2 rounded-2">{{ recipe.calories }}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Fat:</span>
+                        <span class="p-2 rounded-2">{{ recipe.fat }}</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Protein:</span>
+                        <span class="p-2 rounded-2">{{ recipe.protein }}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Carbohydrates:</span>
+                        <span class="p-2 rounded-2">{{ recipe.carbohydrates }}</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="fw-bold me-2">Cuisine:</span>
+                        <span class="p-2 rounded-2">{{ recipe.cuisine }}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="d-flex p-2">
+            <div class="mt-3">
+                <p class="fw-bold">INGREDIENTS:</p>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+                        {{ ingredient }}
+                    </li>
+                </ul>
+            </div>
+            <div class="vr mx-1"></div>
+            <div class="mt-3">
+                <p class="fw-bold me-2">INSTRUCTIONS:</p>
+                <p class="card-body">{{ recipe.instructions }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #spinner>
+    <recipe-ui-spinner></recipe-ui-spinner>
+</ng-template>

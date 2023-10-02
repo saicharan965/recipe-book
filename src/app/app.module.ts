@@ -18,6 +18,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ExploreRecipesComponent } from './explore-recipes/explore-recipes.component';
 import { RemoveAfterAtPipe } from './shared/trimAtTheRate.pipe';
+import { OtherUsersRecipeComponent } from './other-users-recipe/other-users-recipe.component';
 
 const ROUTES: Routes = [
   {
@@ -28,6 +29,7 @@ const ROUTES: Routes = [
       { path: 'home', component: RecipeListComponent },
       { path: 'add', component: AddRecipeComponent },
       { path: 'explore', component: ExploreRecipesComponent },
+      { path: 'userRecipe/:id/:mail/:oauthId', component: OtherUsersRecipeComponent },
       { path: 'recipe/:id', component: EditRecipeComponent },
       { path: 'profile', component: ProfileComponent },
     ]
@@ -46,7 +48,8 @@ const ROUTES: Routes = [
     ExploreRecipesComponent,
 
     HighlightPipe,
-    RemoveAfterAtPipe
+    RemoveAfterAtPipe,
+    OtherUsersRecipeComponent
 
   ],
   imports: [

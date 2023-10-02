@@ -3,6 +3,7 @@ const router = express.Router();
 const recipeController = require("../controllers/recipeController");
 
 router.get("/allRecipes", recipeController.getAllUserRecipes);
+router.post("/getOtherUsersRecipe", recipeController.getOtherUsersRecipe);
 router.post("/createOrGetUser", recipeController.createOrGetUser);
 
 router.post("/recipes", recipeController.addRecipe);
