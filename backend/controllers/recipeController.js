@@ -136,7 +136,7 @@ exports.getAllUserRecipes = async (req, res) => {
     res.status(200).json(allRecipes);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error: error });
   }
 };
 
